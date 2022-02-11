@@ -29,7 +29,7 @@ public class algoritmosOrdenamiento {
     }
     
     public static void insercionDirecta(int[] arreglo) {
-        int actual, comp, ind, cont, temp;
+        int actual, ind, temp;
         for(int i = 1; i<arreglo.length; i++) {
             
             ind = i;
@@ -47,15 +47,51 @@ public class algoritmosOrdenamiento {
             
         }
     }
-    
+
+    //no lo terminaste!
+    public static void bubbleSort(int[] arreglo) {
+        int actual, comp;
+        for(int i = 0; i<arreglo.length; i++) {
+            actual = arreglo[0];
+            for(int j = 1; j<arreglo.length-i; j++) {
+                comp = arreglo[j];
+                if(actual>comp) {
+                    
+
+                }
+
+            }
+        }
+    }
+
+ 
+
+    public static void quickSort(int[] arreglo, int min, int max) {
+        if(arreglo.length==1) {
+
+        } else {
+            
+           
+            }
+            
+
+
+
+        
+        
+    }
+
+      
     
     
     public static void main(String[] args) {
         // TODO code application logic here
         
+
         int[] nums = {3,2,1, 5, 0, -9};
         insercionDirecta(nums);
         System.out.println(imprimirArreglo(nums));
+        
 
        ;
     }
