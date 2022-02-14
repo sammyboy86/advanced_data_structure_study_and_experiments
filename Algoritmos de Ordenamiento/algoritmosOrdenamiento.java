@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class algoritmosOrdenamiento  {
 
     /**
@@ -73,18 +75,19 @@ public class algoritmosOrdenamiento  {
  
 
     public static <T extends Comparable<T>> void quickSort(T[] arreglo, int min, int max) {
-        if(max==min) {
+        if(min>=max) {
 
         } else {
-            //reubicaPivote(arreglo, );
-        
-            
-           
+            int pivote = reubicaPivote(arreglo, min, max);
+            quickSort(arreglo, min, pivote-1);
+            quickSort(arreglo, pivote+1, max);
+
         }   
     }
 
-    public static <T extends Comparable<T>> void reubicaPivote(T[] arreglo,  int min, int max) {
+    public static <T extends Comparable<T>> int reubicaPivote(T[] arreglo,  int min, int max) {
         T pivote = arreglo[min];
+        int ubiPivote = min;
         min++;
 
         while(min<=max) {           
@@ -98,9 +101,15 @@ public class algoritmosOrdenamiento  {
             }
         }
 
-        swap(arreglo, min-1, 0);
+        swap(arreglo, min-1, ubiPivote);
+        return(min-1);
 
         }
+
+    public static <T extends Comparable<T>> void mergeSort(T[] arreglo) {
+
+
+    }
 
     
 
@@ -113,8 +122,8 @@ public class algoritmosOrdenamiento  {
         // TODO code application logic here
         
 
-        Integer[] nums = {0, -3, 9 , 0, 3, -6};
-        reubicaPivote(nums, 0, nums.length-1);
+        Integer[] nums = {0,1,-3, 56, -6, 420};
+        quickSort(nums, 0, nums.length-1);
         System.out.println(imprimirArreglo(nums));
         
 
