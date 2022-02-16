@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class algoritmosOrdenamiento  {
@@ -107,30 +108,31 @@ public class algoritmosOrdenamiento  {
         }
 
     public static <T extends Comparable<T>> void mergeSort(T[] arreglo) {
-        
-
-
 
 
     }
 
-    
+    private <T extends Comparable<T>> ArrayList<T> merge(T[] arreglo1, T[] arreglo2) {
+        ArrayList<T> res = new ArrayList<T>();
+        while(res.size()<arreglo1.length+arreglo2.length) {
 
-    
+        }
 
-      
-    
+        return res;
+    }
+
+
     
     public static <T extends Comparable<T>> void main(String[] args) {
         // TODO code application logic here
         
 
-        Integer[] nums = {0,1,-3, 56, -6, 420};
+        Integer[] nums = {0,1,-3, 56, -6, 420, 30, 30 , -4, 0, 0};
         quickSort(nums, 0, nums.length-1);
         System.out.println(imprimirArreglo(nums));
-        
-
-       ;
+               
     }
+
+
     
 }
