@@ -107,18 +107,60 @@ public class algoritmosOrdenamiento  {
 
         }
 
-    public static <T extends Comparable<T>> void mergeSort(T[] arreglo) {
+    public static <T extends Comparable<T>> void mergeSort(T[] arreglo, int l, int r) {
+        if(l<r) {
+            int m = (r+l)/2;
+            mergeSort(arreglo, l, m);
+            mergeSort(arreglo, m+1, r);
 
-
+            merge(arreglo, l, m, r);
+        }
     }
 
-    private <T extends Comparable<T>> ArrayList<T> merge(T[] arreglo1, T[] arreglo2) {
-        ArrayList<T> res = new ArrayList<T>();
-        while(res.size()<arreglo1.length+arreglo2.length) {
-
+    private static <T extends Comparable<T>> void merge(T[] arr, int l, int m, int r)
+    {
+        int n1 = m - l + 1;
+        int n2 = r - m;
+ 
+        ArrayList<T> temp1 = new ArrayList<>();
+        ArrayList<T> temp2 = new ArrayList<>();
+ 
+        for (int i=0; i<n1; ++i)
+            temp1.add(arr[l + i]);
+        for (int j=0; j<n2; ++j)
+            temp2.add(arr[m + 1+ j]);
+ 
+        int i = 0, j = 0;
+ 
+        int k = l;
+        while (i < n1 && j < n2)
+        {
+            if (temp1.get(i).compareTo(temp2.get(j))<= 0)
+            {
+                arr[k] = temp1.get(i);
+                i++;
+            }
+            else
+            {
+                arr[k] = temp2.get(j);
+                j++;
+            }
+            k++;
         }
 
-        return res;
+        while (i < n1)
+        {
+            arr[k] = temp1.get(i);
+            i++;
+            k++;
+        }
+
+        while (j < n2)
+        {
+            arr[k] = temp2.get(j);
+            j++;
+            k++;
+        }
     }
 
 
@@ -127,9 +169,14 @@ public class algoritmosOrdenamiento  {
         // TODO code application logic here
         
 
-        Integer[] nums = {0,1,-3, 56, -6, 420, 30, 30 , -4, 0, 0};
-        quickSort(nums, 0, nums.length-1);
+        Integer[] nums = {-3,0,1, -3, -2, -1, 30, 30 , -4, 0, 0};
+        Integer[] nums2 = {0,1,-3, 56, -6, 420, 30, 30 , -4, 0, 0};
+        //quickSort(nums, 0, nums.length-1);
+        //quickSort(nums2, 0, nums.length-1);
+        mergeSort(nums, 0, nums.length-1);
+
         System.out.println(imprimirArreglo(nums));
+
                
     }
 
