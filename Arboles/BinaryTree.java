@@ -119,8 +119,42 @@ public class BinaryTree<T> implements BinaryTreeADT<T>{
 
     }
 
+    public boolean contiene(T elemento) {
+        return buscaElem(raiz, elemento);
+
+    }
+
+    //falta acabar esto
+    private boolean buscaElem(NodoBin<T> actual, T elemento) {
+        if(actual==null) {
+
+        }
+
+        if(actual.getElem().equals(elemento)) {
+            return true;
+
+        } else {
+            if(buscaElem(actual.getIzq(), elemento)) {
+                return true;
+            } else {
+                return(buscaElem(actual.getDer(), elemento));
+            }
+           // return false;
+        }
+        
+
+
+
+    }
+
+        
+    }
+
+
+
+
 
 
 
     
-}
+
