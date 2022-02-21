@@ -33,6 +33,15 @@ public class NodoBin<T> {
 
     }
 
+    public T getElem() {
+        return elem;
+
+    }
+
+    public String toString() {
+        return elem.toString();
+    }
+
     public int numDescendientes() {
 
         int res = 0;

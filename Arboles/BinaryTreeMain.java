@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 import javax.sound.sampled.SourceDataLine;
 
 public class BinaryTreeMain {
@@ -6,26 +8,36 @@ public class BinaryTreeMain {
 
         System.out.println("---------------Arboles---------------");
 
-        NodoBin<Integer> n1 = new NodoBin<Integer>(i);
 
-        for(int i = 0; i<10; i++) {
-            double num = Math.random()*100;
-            NodoBin<Integer> nodo = new NodoBin<Integer>((int) num);
-            if(num<50) {
-                nodo.
-                n1.setDer(nodo);
+        NodoBin<Character> n1 = new NodoBin<Character>('A');
+        n1.setIzq(new NodoBin<Character>('B'));
+        n1.getIzq().setIzq(new NodoBin<Character>('D'));
+        n1.getIzq().setDer(new NodoBin<Character>('E'));
+        n1.getIzq().getIzq().setIzq(new NodoBin<Character>('H'));
+        n1.getIzq().getDer().setDer(new NodoBin<Character>('I'));
 
-            } else {
+        BinaryTree t1 = new BinaryTree<Character>(n1);
 
-            }
+        Iterator<Character> it = t1.nivelIterativo();
+        
 
 
 
-            
+        while(it.hasNext()) {
+            System.out.println(it.next().toString());
         }
         
+    
+
+        //System.out.println(t1.recorrePreorden());
+
+    
+
         
 
+        
+        
+    
                
     }
 
