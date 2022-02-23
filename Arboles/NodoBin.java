@@ -59,6 +59,27 @@ public class NodoBin<T> {
         
     }
 
+    public void cuelga(NodoBin<T> hijo) {
+        if(hijo == null) {
+
+        } else {
+            NodoBin<T> h1 = this.getIzq();
+            NodoBin<T> h2 = this.getDer();
+
+            if(hijo.getElem().compareTo(this.getElem()) <= 0) {
+                
+            }
+
+
+
+        }
+        
+    
+
+
+
+    }
+
     /*
 
     private int contarDescendientes(NodoBin<T> actual, int i) {

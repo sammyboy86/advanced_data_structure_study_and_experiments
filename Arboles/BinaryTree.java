@@ -137,13 +137,11 @@ public class BinaryTree<T> implements BinaryTreeADT<T>{
             if(buscaElem(actual.getIzq(), elemento)) {
                 return true;
             } else {
-                return(buscaElem(actual.getDer(), elemento));
+                buscaElem(actual.getDer(), elemento);
             }
-           // return false;
+            return false;
+
         }
-        
-
-
 
     }
 

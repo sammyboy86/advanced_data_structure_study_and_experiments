@@ -26,6 +26,8 @@ public class BinaryTreeMain {
         while(it.hasNext()) {
             System.out.println(it.next().toString());
         }
+
+        System.out.println(t1.contiene('Z'));
         
     
 
