@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class algoritmosOrdenamiento  {
+
+public class algoritmosOrdenamiento {
 
     /**
      * @param args the command line arguments
@@ -189,7 +190,7 @@ public class algoritmosOrdenamiento  {
         Scanner scanner = null;
         int index = 0;
 
-        ArrayList<Peli> pelis = new ArrayList<>();
+        ArrayList<Peli> pelisMadre = new ArrayList<Peli>();
         
         while((line = reader.readLine()) != null) {
             Peli peli = new Peli();
@@ -200,17 +201,30 @@ public class algoritmosOrdenamiento  {
             peli.setAnio(Integer.parseInt(scanner.next()));
             peli.setTitulo(scanner.next());
 
-            pelis.add(peli);
+            pelisMadre.add(peli);
         } 
 
         reader.close();
 
-        System.out.println(pelis.toString());
-        
+        Peli[] pelisOrdenadas = new Peli[17770];
+
+        for(int i = 0; i<17770; i++) {
+            pelisOrdenadas[i] = pelisMadre.get(i);
+        }
+
+        mergeSort(pelisOrdenadas, 0, 17769);
+
+        System.out.println(pelisOrdenadas[0].toString());
+
+        long start = System.currentTimeMillis();
+
+        seleccionDirecta(Arrays.copyOfRange(pelisOrdenadas, 0, 17770));
+
+        System.out.println(System.currentTimeMillis() - start);
+
         
 
-
-               
+      
     }
 
 
