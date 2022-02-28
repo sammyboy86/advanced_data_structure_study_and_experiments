@@ -19,6 +19,8 @@ public class BinaryTreeMain {
         BinaryTree t1 = new BinaryTree<Character>(n1);
 
         Iterator<Character> it = t1.nivelIterativo();
+
+        System.out.println(t1.altura());
         
 
 
@@ -27,7 +29,8 @@ public class BinaryTreeMain {
             System.out.println(it.next().toString());
         }
 
-        System.out.println(t1.contiene('Z'));
+        //System.out.println(t1.contiene('Z'));
+        
         
     
 

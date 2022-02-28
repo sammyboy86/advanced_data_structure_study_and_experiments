@@ -145,6 +145,20 @@ public class BinaryTree<T> implements BinaryTreeADT<T>{
 
     }
 
+    public int altura() {
+        return altura(raiz,0);
+    }
+
+    private int altura(NodoBin<T> nodo, int cont) {
+        if(nodo==null) {
+            return cont;
+        } else {
+            return Math.max(altura(nodo.getDer(), ++cont), altura(nodo.getIzq(), ++cont));
+
+        }
+
+    }
+
         
     }
 
