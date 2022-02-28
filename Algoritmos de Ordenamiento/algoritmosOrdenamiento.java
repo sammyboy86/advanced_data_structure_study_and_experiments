@@ -1,5 +1,10 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class algoritmosOrdenamiento  {
 
@@ -165,9 +170,9 @@ public class algoritmosOrdenamiento  {
 
 
     
-    public static <T extends Comparable<T>> void main(String[] args) {
+    public static <T extends Comparable<T>> void main(String[] args) throws IOException {
         // TODO code application logic here
-        
+        /*
 
         Integer[] nums = {-3,0,1, -3, -2, -1, 30, 30 , -4, 0, 0};
         Integer[] nums2 = {0,1,-3, 56, -6, 420, 30, 30 , -4, 0, 0};
@@ -175,7 +180,35 @@ public class algoritmosOrdenamiento  {
         //quickSort(nums2, 0, nums.length-1);
         mergeSort(nums, 0, nums.length-1);
 
-        System.out.println(imprimirArreglo(nums));
+        System.out.println(imprimirArreglo(nums));       */
+
+        // open file input stream
+		BufferedReader reader = new BufferedReader(new FileReader("movie_titles2.txt"));
+        
+        String line = null;
+        Scanner scanner = null;
+        int index = 0;
+
+        ArrayList<Peli> pelis = new ArrayList<>();
+        
+        while((line = reader.readLine()) != null) {
+            Peli peli = new Peli();
+            scanner = new Scanner(line);
+            scanner.useDelimiter(",");
+            
+            peli.setId(Integer.parseInt(scanner.next()));
+            peli.setAnio(Integer.parseInt(scanner.next()));
+            peli.setTitulo(scanner.next());
+
+            pelis.add(peli);
+        } 
+
+        reader.close();
+
+        System.out.println(pelis.toString());
+        
+        
+
 
                
     }
