@@ -252,11 +252,6 @@ public class algoritmosOrdenamiento {
         System.out.println(System.currentTimeMillis() - start5);
         long start6 = System.currentTimeMillis();
 
- 
-
-
-        
-
       
     }
 
