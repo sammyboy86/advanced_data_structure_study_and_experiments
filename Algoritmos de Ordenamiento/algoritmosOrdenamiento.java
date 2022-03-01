@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -206,21 +207,53 @@ public class algoritmosOrdenamiento {
 
         reader.close();
 
-        Peli[] pelisOrdenadas = new Peli[17770];
+        Peli[] pelisOrdenadas = new Peli[17770*2];
 
         for(int i = 0; i<17770; i++) {
             pelisOrdenadas[i] = pelisMadre.get(i);
         }
 
-        mergeSort(pelisOrdenadas, 0, 17769);
+        for(int i = 0; i<17770; i++) {
+            pelisOrdenadas[i+17770] = pelisMadre.get(i);
+        }
 
-        System.out.println(pelisOrdenadas[0].toString());
+        //mergeSort(pelisOrdenadas, 0, 35000);
+
+        //Collections.reverse(Arrays.asList(pelisOrdenadas));
+
+
+
 
         long start = System.currentTimeMillis();
 
-        seleccionDirecta(Arrays.copyOfRange(pelisOrdenadas, 0, 17770));
+        seleccionDirecta(Arrays.copyOfRange(pelisOrdenadas, 0, 35000));
 
         System.out.println(System.currentTimeMillis() - start);
+        long start2 = System.currentTimeMillis();
+
+        insercionDirecta(Arrays.copyOfRange(pelisOrdenadas, 0, 35000));
+
+        System.out.println(System.currentTimeMillis() - start2);
+        long start3 = System.currentTimeMillis();
+
+        bubbleSort(Arrays.copyOfRange(pelisOrdenadas, 0, 35000));
+        
+        System.out.println(System.currentTimeMillis() - start3);
+        long start4 = System.currentTimeMillis();
+
+        
+        quickSort(Arrays.copyOfRange(pelisOrdenadas, 0, 35000),0, 35000-1);
+
+        System.out.println(System.currentTimeMillis() - start4);
+        long start5 = System.currentTimeMillis();
+
+        mergeSort(Arrays.copyOfRange(pelisOrdenadas, 0, 35000), 0, 35000-1);
+
+        System.out.println(System.currentTimeMillis() - start5);
+        long start6 = System.currentTimeMillis();
+
+ 
+
 
         
 
