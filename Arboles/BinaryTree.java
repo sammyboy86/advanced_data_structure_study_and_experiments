@@ -155,7 +155,7 @@ public class BinaryTree<T> implements BinaryTreeADT<T>{
         if(nodo==null) {
             return cont;
         } else {
-            return Math.max(altura(nodo.getDer(), ++cont), altura(nodo.getIzq(), ++cont));
+            return Math.max(altura(nodo.getDer(), cont+1), altura(nodo.getIzq(), cont+1));
 
         }
 

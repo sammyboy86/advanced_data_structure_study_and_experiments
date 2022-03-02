@@ -29,12 +29,7 @@ public class BinaryTreeMain {
             System.out.println(it.next().toString());
         }
 
-        //System.out.println(t1.contiene('Z'));
-        
-        
-    
-
-        //System.out.println(t1.recorrePreorden());
+        System.out.println(t1.altura());
 
     
 
