@@ -149,6 +149,8 @@ public class BinaryTree<T> implements BinaryTreeADT<T>{
         return altura(raiz,0);
     }
 
+
+//algo no jala :$
     private int altura(NodoBin<T> nodo, int cont) {
         if(nodo==null) {
             return cont;
