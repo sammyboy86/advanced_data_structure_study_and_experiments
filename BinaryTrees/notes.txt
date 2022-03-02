@@ -1,0 +1,22 @@
+For final exam: width algorithm using while
+replit: https://replit.com/@fesponda/Arbol-2#ArbolBinarioBusqueda.java
+
+--> we're looking for a tree with log2(n) height
+    - Red- Black
+    - AVL: right-left subtrees
+
+
+
+
+to-do:
+    BinarySearchTree
+        - iteratorPreorden
+        - preOrden
+        - inOrden
+        - postOrden
+        - contains
+        - inserta
+        - NodoBB?
+
+
+
