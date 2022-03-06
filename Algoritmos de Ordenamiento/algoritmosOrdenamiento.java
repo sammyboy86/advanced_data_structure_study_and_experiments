@@ -107,7 +107,8 @@ public class algoritmosOrdenamiento {
                 min++;
 
             }
-        }
+        } 
+        //aa
 
         swap(arreglo, min-1, ubiPivote);
         return(min-1);
