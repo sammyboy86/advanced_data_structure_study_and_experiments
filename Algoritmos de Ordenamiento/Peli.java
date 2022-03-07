@@ -11,6 +11,7 @@ public class Peli implements Comparable<Peli> {
         this.id = id;
         this.anio = anio;
         this.titulo = titulo;
+
     }
 
 
