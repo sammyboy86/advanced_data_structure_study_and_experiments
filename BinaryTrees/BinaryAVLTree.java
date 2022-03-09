@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class BinaryAVLTree<T extends Comparable<T>> implements BinaryTreeADT<T> {
 
     private BinaryNode<T> root;
@@ -41,36 +43,75 @@ public class BinaryAVLTree<T extends Comparable<T>> implements BinaryTreeADT<T> 
         if(previous==null) {
             root = new BinaryNode<T>(element);
 
-        } else if (previous.getElement().compareTo(element)<=0) {
-            previous.setLeft(new BinaryNode<T>(element));
-
         } else {
-            previous.setRight(new BinaryNode<T>(element));
+            if (previous.getElement().compareTo(element)<=0) {
+                previous.setLeft(new BinaryNode<T>(element));
+    
+            } else {
+                previous.setRight(new BinaryNode<T>(element));
+               
+            }
+
+            
+
+
+    
 
         }
         
 
+
         
+
         
     }
 
 
     //finish recursion
     public String toString() {
-        return toString(root,0).toString();
+        ArrayList<BinaryNode<T>> nodes = new ArrayList<BinaryNode<T>>();
+        StringBuilder string = new StringBuilder();
+        nodes.add(root);
 
-    }
+        if(root!=null) {
+            string.append(root.getElement().toString());
+        }
+        
 
-    private StringBuilder toString(BinaryNode<T> node, int level) {
-        if(node==null) {
+        while(!nodes.isEmpty()) {
+            ArrayList<BinaryNode<T>> aux = new ArrayList<BinaryNode<T>>();
+            string.append("\n");
+            
+            for(int i = 0; i<nodes.size(); i++) {
+                BinaryNode<T> node = nodes.get(i);
+                BinaryNode<T> left = node.getLeft();
+                BinaryNode<T> right = node.getRight();
+                if(left!=null) {
+                    string.append(left.getElement().toString()).append(" ");
+                    aux.add(left);
 
-        } else {
+                }
+
+                if (right!=null) {
+                    string.append(right.getElement().toString()).append(" ");
+                    aux.add(right);
+
+                }
+
+            
+            }
+            
+            nodes = aux;
+
 
         }
 
-
-
+        return(string.toString());
+        
     }
+
+
+    
 
 
 
