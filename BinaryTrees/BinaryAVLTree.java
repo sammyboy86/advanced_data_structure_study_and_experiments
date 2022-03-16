@@ -19,6 +19,8 @@ public class BinaryAVLTree<T extends Comparable<T>> implements BinaryTreeADT<T> 
 
     @Override
     public void insert(T element) {
+
+
         BinaryNode<T> previous = null;
         BinaryNode<T> current = root;
 
@@ -28,7 +30,7 @@ public class BinaryAVLTree<T extends Comparable<T>> implements BinaryTreeADT<T> 
             T currentElement = current.getElement();
             previous = current;
 
-            if(currentElement.compareTo(element) <= 0) {
+            if(element.compareTo(currentElement) <= 0) {
                 
                 current = current.getLeft();
 
@@ -45,23 +47,38 @@ public class BinaryAVLTree<T extends Comparable<T>> implements BinaryTreeADT<T> 
 
         } else {
             if (previous.getElement().compareTo(element)<=0) {
-                previous.setLeft(new BinaryNode<T>(element));
+                previous.setRight(new BinaryNode<T>(element));
+                previous.getRight().setPapa(previous);
     
             } else {
-                previous.setRight(new BinaryNode<T>(element));
+                previous.setLeft(new BinaryNode<T>(element));
+                previous.getLeft().setPapa(previous);
                
             }
-
-            
-
-
     
 
         }
+
+
+        //check imbalances
+        /*
+        BinaryNode<T> aux = previous;
+        boolean requiresRotation = false;
+        while(aux.getPapa()!=null&&!requiresRotation) {
+            if(Math.abs(aux.getPapa().calculateBalanceFactor())==2) {
+                requiresRotation = true;
+
+            }
+
+        }
+        */
+
         
 
 
         
+
+
 
         
     }
@@ -116,7 +133,7 @@ public class BinaryAVLTree<T extends Comparable<T>> implements BinaryTreeADT<T> 
 
 
     @Override
-    public BinaryNode delete() {
+    public BinaryNode<T> delete() {
         // TODO Auto-generated method stub
         return null;
     }
