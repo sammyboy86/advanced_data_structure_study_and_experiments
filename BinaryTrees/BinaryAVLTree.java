@@ -17,8 +17,9 @@ public class BinaryAVLTree<T extends Comparable<T>> implements BinaryTreeADT<T> 
         return false;
     }
 
-    @Override
-    public void insert(T element) {
+    //@Override
+    public int insert(T element) {
+        int res = 0;
 
 
         BinaryNode<T> previous = null;
@@ -55,23 +56,72 @@ public class BinaryAVLTree<T extends Comparable<T>> implements BinaryTreeADT<T> 
                 previous.getLeft().setPapa(previous);
                
             }
+
+            //check imbalances     
+            BinaryNode<T> aux = previous;
+            boolean requiresRotation = false;
+            while(!requiresRotation&&aux.getPapa()!=null) {
+                if(Math.abs(aux.getPapa().calculateBalanceFactor())==2) {
+                    requiresRotation = true;
+                    res = (int) aux.getPapa().getElement();
+
+                }
+                aux=aux.getPapa();
+            }
+
+
+
+            //rotations!
+
+            if(aux.calculateBalanceFactor()<-1) {
+                //left left 
+                if(aux.getLeft().getElement().compareTo(element)>0) {
+                    BinaryNode<T> temp = aux.getLeft();                  
+                    
+                    if(temp.getRight()!=null) {
+                        aux.setLeft(temp.getRight());
+                        aux.getLeft().setPapa(aux);
+                    } else {
+                        aux.setLeft(null);
+
+                    }
+
+                    if(!aux.equals(root)) {
+                        aux.getPapa().setLeft(temp);
+
+                    }
+ 
+                    temp.setPapa(aux.getPapa());
+                    temp.setRight(aux);
+                    aux.setPapa(temp);
+                    
+
+                    if(aux.equals(root)) {
+                        this.root = temp;
+                    }
+
+                } else { //left right
+
+                }
+
+            } else if(aux.calculateBalanceFactor()>1) {
+                //right right
+                if(aux.getLeft().getElement().compareTo(element)<0) {
+
+                } else { //right left
+                    
+                }
+                
+            }
     
 
         }
+        return res; 
 
 
-        //check imbalances
-        /*
-        BinaryNode<T> aux = previous;
-        boolean requiresRotation = false;
-        while(aux.getPapa()!=null&&!requiresRotation) {
-            if(Math.abs(aux.getPapa().calculateBalanceFactor())==2) {
-                requiresRotation = true;
-
-            }
-
-        }
-        */
+        
+        
+        
 
         
 
@@ -84,7 +134,7 @@ public class BinaryAVLTree<T extends Comparable<T>> implements BinaryTreeADT<T> 
     }
 
 
-    //finish recursion
+
     public String toString() {
         ArrayList<BinaryNode<T>> nodes = new ArrayList<BinaryNode<T>>();
         StringBuilder string = new StringBuilder();

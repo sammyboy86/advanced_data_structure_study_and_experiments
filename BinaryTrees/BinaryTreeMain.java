@@ -11,14 +11,22 @@ public class BinaryTreeMain {
 
         testTree.insert(6);
         testTree.insert(20);
-        testTree.insert(18);
-        testTree.insert(1);
-        testTree.insert(-1);
-        testTree.insert(-3);
+
+
+
+        
+
+
+
+       
+        System.out.println(testTree.insert(1));
+        System.out.println(testTree.insert(-1));
+        System.out.println(testTree.insert(0));
+        System.out.println(testTree.insert(-2));
 
         System.out.println(testTree.toString());
-        System.out.println(n1.calculateHeight());
-        System.out.println(n1.calculateBalanceFactor());
+
+
 
         
         

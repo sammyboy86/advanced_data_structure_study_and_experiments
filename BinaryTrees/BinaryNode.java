@@ -44,7 +44,6 @@ public class BinaryNode<T> {
     public int calculateHeight() {
         return calculateHeight(this);
         
-
     }
 
     private int calculateHeight(BinaryNode<T> current) {
@@ -59,8 +58,16 @@ public class BinaryNode<T> {
     
 
     public int calculateBalanceFactor() {
-        return(this.getRight().calculateHeight()-this.getLeft().calculateHeight());
-
+        if(this.getRight()==null&&this.getLeft()==null) {
+            return 0;
+        } else if(this.getRight()==null) {
+            return(-this.getLeft().calculateHeight());
+        } else if(this.getLeft()==null) {
+            return this.getRight().calculateHeight();
+        } else {
+            return(this.getRight().calculateHeight()-this.getLeft().calculateHeight());
+        }
+        
 
     }
     
