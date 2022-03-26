@@ -9,8 +9,6 @@ public class BinaryAVLTree<T extends Comparable<T>> implements BinaryTreeADT<T> 
 
     }
 
-
-
     @Override
     public boolean isEmpty() {
         // TODO Auto-generated method stub
@@ -34,6 +32,7 @@ public class BinaryAVLTree<T extends Comparable<T>> implements BinaryTreeADT<T> 
             if(element.compareTo(currentElement) <= 0) {
                 
                 current = current.getLeft();
+                
 
             } else {
                 current = current.getRight();
@@ -45,6 +44,7 @@ public class BinaryAVLTree<T extends Comparable<T>> implements BinaryTreeADT<T> 
         //hang leaf
         if(previous==null) {
             root = new BinaryNode<T>(element);
+            root.setPapa(null);
 
         } else {
             if (previous.getElement().compareTo(element)<=0) {
@@ -63,77 +63,154 @@ public class BinaryAVLTree<T extends Comparable<T>> implements BinaryTreeADT<T> 
             while(!requiresRotation&&aux.getPapa()!=null) {
                 if(Math.abs(aux.getPapa().calculateBalanceFactor())==2) {
                     requiresRotation = true;
-                    res = (int) aux.getPapa().getElement();
+
+
+                } else {
+                    aux=aux.getPapa();
 
                 }
-                aux=aux.getPapa();
+                
             }
 
 
 
             //rotations!
+            if(requiresRotation) {
 
-            if(aux.calculateBalanceFactor()<-1) {
-                //left left 
-                if(aux.getLeft().getElement().compareTo(element)>0) {
-                    BinaryNode<T> temp = aux.getLeft();                  
-                    
-                    if(temp.getRight()!=null) {
-                        aux.setLeft(temp.getRight());
-                        aux.getLeft().setPapa(aux);
-                    } else {
-                        aux.setLeft(null);
+                if(aux.getPapa().calculateBalanceFactor()<-1) {
+                    //left left 
+                    if(aux.getElement().compareTo(element)>0) {
 
+                        leftLeft(aux);
+
+                    } else { //left right
+
+                        res = leftRight(aux);
+    
                     }
+    
+                } else if(aux.getPapa().calculateBalanceFactor()>1) {
+                    //right right
+                    if(aux.getElement().compareTo(element)<0) {
+                        rightRight(aux);
 
-                    if(!aux.equals(root)) {
-                        aux.getPapa().setLeft(temp);
+                    } else { //right left
 
+                        rightLeft(aux);
+
+
+
+
+                        
                     }
- 
-                    temp.setPapa(aux.getPapa());
-                    temp.setRight(aux);
-                    aux.setPapa(temp);
-                    
-
-                    if(aux.equals(root)) {
-                        this.root = temp;
-                    }
-
-                } else { //left right
-
-                }
-
-            } else if(aux.calculateBalanceFactor()>1) {
-                //right right
-                if(aux.getLeft().getElement().compareTo(element)<0) {
-
-                } else { //right left
                     
                 }
-                
+
             }
+
+            
     
 
         }
         return res; 
 
-
-        
-        
-        
-
-        
-
-
-        
-
-
-
         
     }
 
+    private void leftLeft(BinaryNode<T> aux) {
 
+        BinaryNode<T> temp = aux.getRight();
+
+        aux.setRight(aux.getPapa());            
+        aux.setPapa(aux.getPapa().getPapa());
+        aux.getRight().setPapa(aux);
+        aux.getRight().setLeft(temp);
+        
+  
+
+        if(aux.getPapa()==null) {
+            this.root = aux;
+        }
+    
+
+    }
+
+    private void rightRight(BinaryNode<T> aux) {
+        BinaryNode<T> temp = aux.getLeft();
+
+        aux.setLeft(aux.getPapa());            
+        aux.setPapa(aux.getPapa().getPapa());
+        aux.getLeft().setPapa(aux);
+        aux.getLeft().setRight(temp);
+        
+  
+
+        if(aux.getPapa()==null) {
+            this.root = aux;
+        }
+
+    }
+
+    private void rightLeft(BinaryNode<T> aux) {
+
+        BinaryNode<T> temp = aux.getLeft();
+
+        aux.setLeft(temp.getRight());
+        if(temp.getRight()!=null) {         
+            temp.getRight().setPapa(aux);
+        }
+
+        aux.getPapa().setRight(temp.getLeft());
+        if(temp.getLeft()!=null) {         
+            temp.getLeft().setPapa(aux.getPapa());
+        }
+
+        temp.setLeft(aux.getPapa());
+        temp.setPapa(aux.getPapa().getPapa());
+        aux.getPapa().setPapa(temp);
+        
+
+        temp.setRight(aux);
+        aux.setPapa(temp);
+
+        if(temp.getPapa()==null) {           
+            this.root = temp;
+        }
+
+    }
+
+    private int leftRight(BinaryNode<T> aux) {
+        int res = 0;
+        BinaryNode<T> temp = aux.getRight();
+
+        aux.setRight(temp.getLeft());
+        if(temp.getLeft()!=null) {         
+            temp.getLeft().setPapa(aux);
+        }
+
+        aux.getPapa().setLeft(temp.getRight());
+        if(temp.getRight()!=null) {
+            
+            temp.getRight().setPapa(aux.getPapa());
+        }
+
+        temp.setRight(aux.getPapa());
+        temp.setPapa(aux.getPapa().getPapa());
+        aux.getPapa().setPapa(temp);
+        
+
+        temp.setLeft(aux);
+        aux.setPapa(temp);
+
+        if(temp.getPapa()==null) {
+            res=1;
+            this.root = temp;
+        }
+
+        return res;
+
+
+    }
 
     public String toString() {
         ArrayList<BinaryNode<T>> nodes = new ArrayList<BinaryNode<T>>();

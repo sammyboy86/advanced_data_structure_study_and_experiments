@@ -9,20 +9,14 @@ public class BinaryTreeMain {
   
         
 
-        testTree.insert(6);
+        testTree.insert(14);
+        System.out.println(testTree.insert(15));
         testTree.insert(20);
+        testTree.insert(21);
 
 
+        System.out.println(n1.getRight().getElement());
 
-        
-
-
-
-       
-        System.out.println(testTree.insert(1));
-        System.out.println(testTree.insert(-1));
-        System.out.println(testTree.insert(0));
-        System.out.println(testTree.insert(-2));
 
         System.out.println(testTree.toString());
 
