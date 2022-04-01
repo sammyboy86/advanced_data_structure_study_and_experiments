@@ -276,7 +276,7 @@ public class AVLTree<T extends Comparable<T>> {
 
         if(current.getLeft()==null&&current.getRight()==null) {
 
-        } else if() {
+        } else if(true) {
 
         } else {
 
