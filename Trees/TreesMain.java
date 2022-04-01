@@ -14,24 +14,23 @@ public class TreesMain {
 
         //try insert
 
-        BinaryNode<Integer> n2 = new BinaryNode<Integer>(8);
+        BinaryNode<Integer> n2 = new BinaryNode<Integer>(30);
 
         AVLTree<Integer> avl_tree = new AVLTree<>(n2);
 
+        avl_tree.insert(new BinaryNode<Integer>(2));
+        avl_tree.insert(new BinaryNode<Integer>(0));
+        avl_tree.insert(new BinaryNode<Integer>(100));
+
+
+        avl_tree.insert(new BinaryNode<Integer>(90));
+        avl_tree.insert(new BinaryNode<Integer>(40));
+        avl_tree.insert(new BinaryNode<Integer>(-100));
+        avl_tree.insert(new BinaryNode<Integer>(20));
+        avl_tree.insert(new BinaryNode<Integer>(1));
+        avl_tree.insert(new BinaryNode<Integer>(-110));
         avl_tree.insert(new BinaryNode<Integer>(10));
-        avl_tree.insert(new BinaryNode<Integer>(15));
-        avl_tree.insert(new BinaryNode<Integer>(14));
 
-
-        avl_tree.insert(new BinaryNode<Integer>(16));
-        avl_tree.insert(new BinaryNode<Integer>(13));
-        avl_tree.insert(new BinaryNode<Integer>(4));
-        System.out.println(avl_tree.insert(new BinaryNode<Integer>(3)));
-        
-
-
-        
-        
 
         System.out.println(avl_tree.toString());
 

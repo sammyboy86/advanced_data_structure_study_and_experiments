@@ -15,7 +15,7 @@ public class BinaryTreeMain {
         testTree.insert(21);
 
 
-        System.out.println(n1.getRight().getElement());
+
 
 
         System.out.println(testTree.toString());

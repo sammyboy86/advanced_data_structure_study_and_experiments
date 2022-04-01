@@ -110,13 +110,16 @@ public class AVLTree<T extends Comparable<T>> {
 
         if(tempRoot.equals(root)) {
             this.root = tempRootRight;
+        } else {
+            if(tempRootRight.getPapa().getKey().compareTo(tempRoot.getKey()) > 0) {
+                tempRootRight.getPapa().setLeft(tempRootRight);
+            } else {
+                tempRootRight.getPapa().setRight(tempRootRight);
+            }
+
         }
 
-        if(tempRoot.getPapa().getKey().compareTo(tempRoot.getKey()) > 0) {
-            tempRoot.getPapa().setLeft(tempRootRight);
-        } else {
-            tempRoot.getPapa().setRight(tempRootRight);
-        }
+        
 
     }
 
@@ -144,13 +147,16 @@ public class AVLTree<T extends Comparable<T>> {
 
         if(tempRoot.equals(root)) {
             this.root = tempRootRightLeft;
+        } else {
+            if(tempRootRightLeft.getPapa().getKey().compareTo(tempRoot.getKey()) > 0) {
+                tempRootRightLeft.getPapa().setLeft(tempRootRightLeft);
+            } else {
+                tempRootRightLeft.getPapa().setRight(tempRootRightLeft);
+            }
+
         }
 
-        if(tempRoot.getPapa().getKey().compareTo(tempRoot.getKey()) > 0) {
-            tempRoot.getPapa().setLeft(tempRootRightLeft);
-        } else {
-            tempRoot.getPapa().setRight(tempRootRightLeft);
-        }
+       
 
     }
 
@@ -170,13 +176,16 @@ public class AVLTree<T extends Comparable<T>> {
 
         if(tempRoot.equals(root)) {
             this.root = tempRootLeft;
+        } else {
+            if(tempRootLeft.getPapa().getKey().compareTo(tempRoot.getKey()) > 0) {
+                tempRootLeft.getPapa().setLeft(tempRootLeft);
+            } else {
+                tempRootLeft.getPapa().setRight(tempRootLeft);
+            }
+
         }
 
-        if(tempRoot.getPapa().getKey().compareTo(tempRoot.getKey()) > 0) {
-            tempRoot.getPapa().setLeft(tempRootLeft);
-        } else {
-            tempRoot.getPapa().setRight(tempRootLeft);
-        }
+        
 
     }
 
@@ -204,13 +213,16 @@ public class AVLTree<T extends Comparable<T>> {
 
         if(tempRoot.equals(root)) {
             this.root = tempRootLeftRight;
+        } else {
+            if(tempRootLeftRight.getPapa().getKey().compareTo(tempRoot.getKey()) > 0) {
+                tempRootLeftRight.getPapa().setLeft(tempRootLeftRight);
+            } else {
+                tempRootLeftRight.getPapa().setRight(tempRootLeftRight);
+            }
+
         }
 
-        if(tempRoot.getPapa().getKey().compareTo(tempRoot.getKey()) > 0) {
-            tempRoot.getPapa().setLeft(tempRootLeftRight);
-        } else {
-            tempRoot.getPapa().setRight(tempRootLeftRight);
-        }
+       
 
     }
 
@@ -254,6 +266,28 @@ public class AVLTree<T extends Comparable<T>> {
 
         return(string.toString());
         
+    }
+
+    public boolean delete(T key) {
+        boolean res = false;
+        BinaryNode<T> current = root;
+
+        
+
+        if(current.getLeft()==null&&current.getRight()==null) {
+
+        } else if() {
+
+        } else {
+
+        }
+
+
+
+        return res;
+
+
+
     }
     
 }
