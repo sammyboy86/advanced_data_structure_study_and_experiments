@@ -1,5 +1,6 @@
 public class BinaryTreeMain {
     public static <T extends Comparable<T>> void main(String[] args) {
+        /*
 
 
         BinaryNode<Integer> n1 = new BinaryNode<Integer>(16);
@@ -15,10 +16,20 @@ public class BinaryTreeMain {
         testTree.insert(21);
 
 
-        System.out.println(n1.getRight().getElement());
+        
 
 
         System.out.println(testTree.toString());
+        */
+
+        HeapTree<Integer> heap = new HeapTree<Integer>();
+        heap.insert(4);
+        heap.insert(5);
+        heap.insert(7);
+
+
+
+        System.out.println(heap.toString());
 
 
 
