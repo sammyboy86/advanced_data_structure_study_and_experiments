@@ -16,7 +16,11 @@ public class BinaryTreeMain {
         testTree.insert(21);
 
 
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> a0d27342b55368c11b0793526dce4600f21be9eb
 
 
         System.out.println(testTree.toString());
