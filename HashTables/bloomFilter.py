@@ -11,17 +11,20 @@ class BloomFilter:
     self.size=size
     self.cont=0
 
+  
   def regresaHash(self,dato):
     bits=int(np.ceil(np.log(self.size)/np.log(2)))
     hexa=int(np.ceil(bits/4))
     nMd5=int(np.ceil(self.k*hexa/32))
-    hash=hl.md5(dato.encode('utf-8')).hexdigest()
+    hash =hl.md5(dato.encode('utf-8')).hexdigest()
     for i in range(nMd5-1):
       hash+=hl.md5(hash.encode('utf-8')).hexdigest()
     res=[]
     for i in range(0,hexa*self.k,hexa):
       res.append(int(hash[i:i+hexa],16)%self.size)
     return res
+  
+
 
   def inserta(self,dato):
     posiciones=self.regresaHash(dato)
@@ -39,11 +42,50 @@ class BloomFilter:
       i+=1
     return band
 
-def optimizaBloom(numDatos, fracFalsosPositivos):
+
+#m = -n*ln(p) / (ln(2)^2) the number of bits
+
+#k = m/n * ln(2) the number of hash functions
+
+#Ojo m no depende de k (segun esto)
+
+
+def optimizaBloom(numDatos, universo, fracFalsosPositivosEsperada):
+
+  arr = np.array([str(i for i in range(numDatos))], dtype=str)
+  
+  def crearBloom(numDatos, k, size):
+
+    bf = BloomFilter(size, k)
+
+    for i in range(numDatos):
+      bf.inserta(str(i))
+
+    return bf
+
+
+  fracFalsosPositivos = 1
+  size = 1
+
+  while(fracFalsosPositivosEsperada<fracFalsosPositivos):
+
+    falsosPositivos = 0
+    size = size + 1
+
+
+    bf = crearBloom(numDatos, int((size/numDatos)*np.log(2)), size)
+
+    for i in range(universo):
+      if(bf.busca(str(i)) &  (str(i) not in arr)):
+        falsosPositivos = falsosPositivos +1
+    
+    fracFalsosPositivos = falsosPositivos/universo
+    print(fracFalsosPositivos)   
 
   
+  return size 
 
-
+      
 
 def main():
   bf=BloomFilter(1000,4)
@@ -52,6 +94,7 @@ def main():
   print(bf.busca('laura'))
   print(bf.busca('fer'))
 
+  print(optimizaBloom(20,1000, .8))
   #objetivo: minimizar tamanio para alcanzar cierto nivel de falsos positivos (jugar con k y tipo de funcion)
 
 
