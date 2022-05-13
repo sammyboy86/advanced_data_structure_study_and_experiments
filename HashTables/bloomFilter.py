@@ -94,7 +94,7 @@ def main():
   print(bf.busca('laura'))
   print(bf.busca('fer'))
 
-  print(optimizaBloom(20,1000, .8))
+  print(optimizaBloom(200,1000, .4))
   #objetivo: minimizar tamanio para alcanzar cierto nivel de falsos positivos (jugar con k y tipo de funcion)
 
 
