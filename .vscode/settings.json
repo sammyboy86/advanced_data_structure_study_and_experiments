@@ -1,7 +1,7 @@
 {
     "java.project.sourcePaths": [
+        "Repaso Recursividad",
         "BinaryTrees",
-        "BinaryTrees2",
-        "Repaso Recursividad"
+        "Trees"
     ]
 }
