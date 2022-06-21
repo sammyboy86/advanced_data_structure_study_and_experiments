@@ -28,10 +28,14 @@ class NodeTrie:
     def addChild(self, child):
         self.children[child.getKey()] = child
 
+  
+
+
 class Trie:
 
-    def __init__(self, root):
-        self.root = root
+    def __init__(self, key):
+        self.root = NodeTrie(key)
+        self.root.nilFalse()
     
     def insert(self, key):
         current = self.root
@@ -77,9 +81,12 @@ class Trie:
         element = key[pos]
         if(pos==len(key)-1):
             print(node.getChildren())
+            print(node.getNil())
             temp = node.getChildren()[element]
             if(node.getNil()):
                 node.nilFalse()
+
+            
             
         elif(element in node.getChildren()):
             temp = node.getChildren()[element]
@@ -91,15 +98,15 @@ class Trie:
 
 def main():
 
-    root = NodeTrie(None)
-    trie = Trie(root)
+
+    trie = Trie(None)
     trie.insert('ola')
     trie.insert('olas')
     trie.insert('olab')
 
     #pruebas
-    print('hijos de nodo a:')
-    print(root.getChildren()['o'].getChildren()['l'].getChildren()['a'].getChildren())
+    #print('hijos de nodo a:')
+    #print(root.getChildren()['o'].getChildren()['l'].getChildren()['a'].getChildren())
     print('buscar olas:')
     print(trie.search('olas'))
     print('buscar ola:')
@@ -111,6 +118,7 @@ def main():
     trie.delete('ola')
 
     print(trie.search('ola'))
+    print(trie.search('olas'))
 
 
 
