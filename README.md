@@ -1,5 +1,2 @@
-# Estructuras-de-Datos-Avanzadas
-Código de EDA
-
-este es
-el readme
+# Advanced-Data-Structure-Study-and-Experiments
+Código de
